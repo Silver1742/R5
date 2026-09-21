@@ -9,13 +9,21 @@ function formatDate(value) {
 }
 
 export default function TaskDetailModal({ task, onClose, onEdit, onDelete }) {
+  const canDelete = task.status === "completada";
+
   return (
     <Modal
       title="Consulta de tarea"
       onClose={onClose}
       footer={
         <>
-          <button className="btn-neon-outline row-actions danger" onClick={onDelete}>
+          <button
+            className="btn-neon-outline"
+            style={canDelete ? { color: "var(--danger)", borderColor: "var(--danger)" } : undefined}
+            disabled={!canDelete}
+            title={canDelete ? "Eliminar" : "Solo se pueden eliminar tareas completadas"}
+            onClick={onDelete}
+          >
             <i className="bi bi-trash3 me-1" /> Eliminar
           </button>
           <button className="btn-neon" onClick={onEdit}>
@@ -25,6 +33,12 @@ export default function TaskDetailModal({ task, onClose, onEdit, onDelete }) {
       }
     >
       <div className="d-flex flex-column gap-3">
+        {!canDelete && (
+          <div className="alert alert-warning py-2 small mb-0">
+            <i className="bi bi-info-circle me-1" />
+            Esta tarea todavía no se puede eliminar: marcala como "Completada" primero.
+          </div>
+        )}
         <div>
           <div className="detail-label">Título</div>
           <div className="fs-5 fw-semibold">{task.title}</div>

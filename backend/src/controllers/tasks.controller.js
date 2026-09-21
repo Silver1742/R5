@@ -86,13 +86,18 @@ async function update(req, res) {
   res.json(updated[0]);
 }
 
-// Baja
+// Baja: solo se puede eliminar una tarea ya completada
 async function remove(req, res) {
-  const [result] = await pool.query("DELETE FROM tasks WHERE id = ? AND user_id = ?", [
+  const [existing] = await pool.query("SELECT * FROM tasks WHERE id = ? AND user_id = ?", [
     req.params.id,
     req.user.id,
   ]);
-  if (result.affectedRows === 0) return res.status(404).json({ error: "Tarea no encontrada" });
+  if (existing.length === 0) return res.status(404).json({ error: "Tarea no encontrada" });
+  if (existing[0].status !== "completada") {
+    return res.status(400).json({ error: "Solo se pueden eliminar tareas completadas" });
+  }
+
+  await pool.query("DELETE FROM tasks WHERE id = ?", [req.params.id]);
   res.json({ success: true });
 }
 

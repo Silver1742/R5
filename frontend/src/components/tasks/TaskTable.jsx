@@ -46,7 +46,12 @@ export default function TaskTable({ tasks, onView, onEdit, onDelete }) {
                 <button title="Modificar" onClick={() => onEdit(task)}>
                   <i className="bi bi-pencil-square" />
                 </button>
-                <button title="Eliminar" className="danger" onClick={() => onDelete(task)}>
+                <button
+                  title={task.status === "completada" ? "Eliminar" : "Solo se pueden eliminar tareas completadas"}
+                  className="danger"
+                  disabled={task.status !== "completada"}
+                  onClick={() => onDelete(task)}
+                >
                   <i className="bi bi-trash3" />
                 </button>
               </td>

@@ -65,8 +65,8 @@ export default function Dashboard() {
       await api.delete(`/tasks/${taskToDelete.id}`);
       setTasks((prev) => prev.filter((t) => t.id !== taskToDelete.id));
       push("Tarea eliminada");
-    } catch {
-      push("No se pudo eliminar la tarea", "error");
+    } catch (err) {
+      push(err?.response?.data?.error || "No se pudo eliminar la tarea", "error");
     } finally {
       setTaskToDelete(null);
       setDetailTask(null);

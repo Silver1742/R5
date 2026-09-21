@@ -183,6 +183,11 @@
 .row-actions button.danger:hover {
   color: var(--danger);
 }
+.row-actions button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: transparent;
+}
 
 .empty-state {
   text-align: center;
