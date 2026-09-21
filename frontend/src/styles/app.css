@@ -1,0 +1,255 @@
+/* ---------- Navbar ---------- */
+.app-navbar {
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 0;
+}
+
+.brand-mark {
+  color: var(--text) !important;
+  font-size: 1.15rem;
+}
+.brand-bracket {
+  color: var(--accent);
+}
+
+.app-nav-link {
+  color: var(--text-muted) !important;
+  font-weight: 500;
+}
+.app-nav-link:hover,
+.app-nav-link.active {
+  color: var(--text) !important;
+}
+
+/* ---------- Login page ---------- */
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.login-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-glow);
+}
+
+.provider-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated-2);
+  color: var(--text);
+  font-weight: 600;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.provider-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+  color: var(--text);
+}
+.provider-btn i {
+  font-size: 1.25rem;
+}
+.provider-btn.provider-google i { color: #ea4335; }
+.provider-btn.provider-github i { color: var(--text); }
+.provider-btn.provider-discord i { color: #5865f2; }
+
+/* ---------- Dashboard ---------- */
+.dashboard-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.75rem 0.35rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+.user-chip img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.stat-tile {
+  padding: 1.25rem;
+  text-align: center;
+}
+.stat-tile .stat-value {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ---------- Tabla de tareas (Listado) ---------- */
+.task-table-wrap {
+  overflow-x: auto;
+}
+.task-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.task-table th {
+  text-align: left;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.task-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.task-table tbody tr {
+  transition: background 0.15s ease;
+  cursor: pointer;
+}
+.task-table tbody tr:hover {
+  background: var(--bg-elevated-2);
+}
+.task-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.badge-status,
+.badge-priority {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+.badge-status.pendiente { background: rgba(255, 182, 72, 0.15); color: var(--warning); }
+.badge-status.en_progreso { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); }
+.badge-status.completada { background: rgba(53, 214, 143, 0.15); color: var(--success); }
+
+.badge-priority.baja { border: 1px solid var(--border); color: var(--text-muted); }
+.badge-priority.media { border: 1px solid var(--accent-2); color: var(--accent-2); }
+.badge-priority.alta { border: 1px solid var(--danger); color: var(--danger); }
+
+.row-actions button {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.row-actions button:hover {
+  color: var(--text);
+  background: var(--bg-elevated-2);
+}
+.row-actions button.danger:hover {
+  color: var(--danger);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Modales (Alta / Modificación / Consulta) ---------- */
+.modal-backdrop-custom {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal-content.themed {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 16px;
+}
+.modal-content.themed .modal-header,
+.modal-content.themed .modal-footer {
+  border-color: var(--border);
+}
+.modal-content.themed .form-control,
+.modal-content.themed .form-select {
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.modal-content.themed .form-control:focus,
+.modal-content.themed .form-select:focus {
+  background: var(--bg-elevated-2);
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(var(--accent-rgb), 0.2);
+}
+.modal-content.themed .btn-close {
+  filter: var(--btn-close-filter, none);
+}
+[data-theme="dark"] .modal-content.themed .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.detail-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+/* ---------- Toasts propios ---------- */
+.toast-stack {
+  position: fixed;
+  top: 5.5rem;
+  right: 1rem;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.toast-item {
+  min-width: 260px;
+  padding: 0.85rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.toast-item.success { border-left: 3px solid var(--success); }
+.toast-item.error { border-left: 3px solid var(--danger); }
